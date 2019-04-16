@@ -37,7 +37,7 @@ public class XmlPullParserUtil {
 
             while(parser.nextTag() == XmlPullParser.START_TAG){
                 String name1=parser.getName(); //获得该标签的名字
-                if(name1.equals("item")){
+                if(name1.equals("item")||name1.equals("entry")){
                     item = new RSSItem();
 
                     while(parser.nextTag()==XmlPullParser.START_TAG){

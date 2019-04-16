@@ -15,6 +15,7 @@ import com.radoapx.irss.R;
 import com.radoapx.irss.model.RecyclerViewFragment;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG="MainAcitivity";
@@ -27,10 +28,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        FlowManager.init(this);
         initView();
         initData();
         initEvent();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FlowManager.destroy();
     }
 
     private void initData() {

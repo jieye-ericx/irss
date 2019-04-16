@@ -96,7 +96,6 @@ public class RecyclerViewFragment extends Fragment {
                         dataList = rf.getAllItems();
                         Message msg = new Message();
                         msg.what = RSS_MESSAGE;
-
                         uiHandler.sendMessage(msg);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -125,6 +124,8 @@ public class RecyclerViewFragment extends Fragment {
 //                        Log.e(TAG, "handleMessage: "+e.getPubDate() );
                         s.setPubDate(e.getPubDate());
 //                        Log.e(TAG, "handleMessage: "+s.getPubDate());
+                        s.setIsStared(0);
+                        s.save();
                         list.add(s);
                     }
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -44,13 +44,11 @@ public class WebViewActivity extends AppCompatActivity {
                     isStared=0;
                     Snackbar.make(v, "取收成功", Snackbar.LENGTH_SHORT)
                             .show();
-                    // TODO: 2019/4/15
                 }else{
                     fab.setImageResource(R.drawable.star_a);
                     isStared=1;
                     Snackbar.make(v, "收藏成功", Snackbar.LENGTH_SHORT)
                             .show();
-                    // TODO: 2019/4/15
                 }
             }
         });
