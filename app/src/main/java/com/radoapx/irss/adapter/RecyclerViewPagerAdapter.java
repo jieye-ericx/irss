@@ -62,6 +62,7 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
                 Intent intent = new Intent(mContext, WebViewActivity.class);
                 intent.setData(Uri.parse(rssItem.getLink()));
                 intent.putExtra("position", position);
+                intent.putExtra("isStared",rssItem.getIsStared());
                 ((MainActivity) mContext).startActivityForResult(intent, 1);
             }
         });
@@ -76,6 +77,7 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
                 Intent intent = new Intent(mContext, WebViewActivity.class);
                 intent.setData(Uri.parse(rssItem.getLink()));
                 intent.putExtra("position", position);
+                intent.putExtra("isStared",rssItem.getIsStared());
                 ((MainActivity) mContext).startActivityForResult(intent, 1);
             }
         });
