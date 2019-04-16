@@ -1,0 +1,4 @@
+#Tue Apr 16 13:16:35 CST 2019
+base.0=E\:\\DESKTOP\\LIFE_MEANS_CODING\\Android\\iRss\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out
+path.0=classes.dex
+renamed.0=classes.dex

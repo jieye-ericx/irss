@@ -1,0 +1,7 @@
+#Tue Apr 16 13:39:34 CST 2019
+base.0=E\:\\DESKTOP\\LIFE_MEANS_CODING\\Android\\irss\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=E\:\\DESKTOP\\LIFE_MEANS_CODING\\Android\\irss\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out

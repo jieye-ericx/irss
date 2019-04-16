@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Tue Apr 16 13:16:35 CST 2019
+0.baseType=DIRECTORY
+0.base=E\:\\DESKTOP\\LIFE_MEANS_CODING\\Android\\iRss\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out
+0.path=classes.dex
+0.set=DEX
+count=1
