@@ -10,9 +10,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 
-/**
- * Created by Administrator on 2019/3/28.
- */
 public class XmlPullParserUtil {
 
     public static RSSFeed parseXml(InputStream inputStream) throws Exception {
@@ -41,14 +38,12 @@ public class XmlPullParserUtil {
                     item = new RSSItem();
 
                     while(parser.nextTag()==XmlPullParser.START_TAG){
-
                         String name2 = parser.getName();
-
                         if(name2.equals("title")){
                             item.setTitle(parser.nextText());
                         }else if(name2.equals("link")){
                             item.setLink(parser.nextText());
-                        }else if(name2.equals("description")){
+                        }else if(name2.equals("description")||name2.equals("content")){
                             item.setDescription(parser.nextText());
                         }
                         else if(name2.equals("pubDate")) {
@@ -70,8 +65,6 @@ public class XmlPullParserUtil {
         return rssFeed;
     }
 
-
-
     /**
      * 标签结束时进行的处理
      * @param parser
@@ -84,5 +77,4 @@ public class XmlPullParserUtil {
                 break;
         }
     }
-
 }

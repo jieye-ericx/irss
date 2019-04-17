@@ -14,14 +14,13 @@ import com.radoapx.irss.R;
 import com.radoapx.irss.activity.MainActivity;
 import com.radoapx.irss.activity.WebViewActivity;
 import com.radoapx.irss.db.StaredRssItem;
-import com.radoapx.irss.utils.MyImageView;
+import com.radoapx.irss.view.MyImageView;
 
 import java.util.List;
 
 public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewPagerAdapter.ViewHolder> {
 
     private List<StaredRssItem> list;
-    //    private List<RSSItem> mData;
     private Context mContext;
 
     public RecyclerViewPagerAdapter(List<StaredRssItem> list, Context context) {
@@ -42,7 +41,6 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
             date = (TextView) view.findViewById(R.id.rss_time);
             type = (TextView) view.findViewById(R.id.rss_type);
             imageView=(MyImageView) view.findViewById(R.id.card_view_image);
-//            des = (TextView) view.findViewById(R.id.rss_des);
         }
     }
 
@@ -60,9 +58,10 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
 //                Intent intent = new Intent(Intent.ACTION_VIEW);
 //                mContext.startActivity(intent);
                 Intent intent = new Intent(mContext, WebViewActivity.class);
-                intent.setData(Uri.parse(rssItem.getLink()));
-                intent.putExtra("position", position);
-                intent.putExtra("isStared",rssItem.getIsStared());
+                intent.putExtra("StaredRssItem",rssItem);
+//                intent.setData(Uri.parse(rssItem.getLink()));
+//                intent.putExtra("position", position);
+//                intent.putExtra("isStared",rssItem.getIsStared());
                 ((MainActivity) mContext).startActivityForResult(intent, 1);
             }
         });
@@ -72,12 +71,11 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 StaredRssItem rssItem = list.get(position);
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                mContext.startActivity(intent);
                 Intent intent = new Intent(mContext, WebViewActivity.class);
-                intent.setData(Uri.parse(rssItem.getLink()));
-                intent.putExtra("position", position);
-                intent.putExtra("isStared",rssItem.getIsStared());
+                intent.putExtra("StaredRssItem",rssItem);
+//                intent.setData(Uri.parse(rssItem.getLink()));
+//                intent.putExtra("position", position);
+//                intent.putExtra("isStared",rssItem.getIsStared());
                 ((MainActivity) mContext).startActivityForResult(intent, 1);
             }
         });
@@ -91,15 +89,12 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
         viewHolder.title.setText(rssItem.getTitle());
         viewHolder.date.setText(rssItem.getPubDate());
         viewHolder.type.setText(rssItem.getCategory());
-//        handleImageURI(rssItem.getDescription());
         String s=handleImageURI(rssItem.getDescription());
         if(s.equals("")){
             viewHolder.imageView.setImageResource(R.drawable.not_found);
         }else{
             viewHolder.imageView.setImageURL(s);
         }
-
-//        viewHolder.des.setText(rssItem.getDescription());
     }
 
     public String handleImageURI(String s){
@@ -108,7 +103,6 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
         int flag=0;
         for(int i=0;i<s.length();i++){
 //            Log.e("33333333333333", "handleImageURI: "+s.substring(i+11,i+13) );
-//            break;
             if(i+8>=s.length()) break;
             if(s.substring(i,i+8).equals("img src=")){
 //                Log.e("44444444444444", "handleImageURI: "+s.substring(i,i+8)+"  ====" );
@@ -124,7 +118,6 @@ public class RecyclerViewPagerAdapter extends RecyclerView.Adapter<RecyclerViewP
             if(flag==1) break;
         }
 //        Log.e("222222222222222", "handleImageURI: "+suri );
-//        Uri uri = Uri.parse(suri);
         return suri;
     }
     @Override

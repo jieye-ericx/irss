@@ -35,12 +35,14 @@ import okhttp3.Response;
 public class RecyclerViewFragment extends Fragment {
     static Context mcontext;
     private String URL;
+    private int position;
 
-    public static Fragment newInstance(Context mcontext,String url) {
+    public static Fragment newInstance(Context mcontext,String url,int position) {
         RecyclerViewFragment.mcontext = mcontext;
         RecyclerViewFragment fragment=new RecyclerViewFragment();
         Bundle bundle=new Bundle();
         bundle.putString("URL",url);
+        bundle.putInt("position",position);
         fragment.setArguments(bundle);
 //        Log.e("22222222222222", "newInstance: "+RecyclerViewFragment.i );
         return fragment;
@@ -57,6 +59,7 @@ public class RecyclerViewFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         URL=getArguments().getString("URL");
+        position=getArguments().getInt("position");
     }
 
     @Override
@@ -94,6 +97,9 @@ public class RecyclerViewFragment extends Fragment {
                     try {
                         RSSFeed rf = XmlPullParserUtil.parseXml(response.body().byteStream());
                         dataList = rf.getAllItems();
+                        if(dataList==null) Log.e(TAG, "onResponse: "+"kong" );
+                        else Log.e(TAG, "onResponse: "+"bukong" );
+                        Log.e(TAG, "onResponse: "+dataList.get(0).getTitle()+" "+dataList.get(0).getLink() );
                         Message msg = new Message();
                         msg.what = RSS_MESSAGE;
                         uiHandler.sendMessage(msg);
@@ -125,6 +131,7 @@ public class RecyclerViewFragment extends Fragment {
                         s.setPubDate(e.getPubDate());
 //                        Log.e(TAG, "handleMessage: "+s.getPubDate());
                         s.setIsStared(0);
+                        s.setFrom(position);
                         s.save();
                         list.add(s);
                     }

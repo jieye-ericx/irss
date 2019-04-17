@@ -1,4 +1,4 @@
-package com.radoapx.irss.utils;
+package com.radoapx.irss.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -66,9 +66,7 @@ public class MyImageView extends AppCompatImageView {
                     int code = connection.getResponseCode();
                     if (code == 200) {
                         InputStream inputStream = connection.getInputStream();
-                        //使用工厂把网络的输入流生产Bitmap
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        //利用Message把图片发给Handler
                         Message msg = Message.obtain();
                         msg.obj = bitmap;
                         msg.what = GET_DATA_SUCCESS;
@@ -86,5 +84,4 @@ public class MyImageView extends AppCompatImageView {
             }
         }.start();
     }
-
 }

@@ -5,8 +5,10 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
+import java.io.Serializable;
+
 @Table(database = MyDatabase.class)
-public class StaredRssItem extends BaseModel {
+public class StaredRssItem extends BaseModel implements Serializable {
     @PrimaryKey(autoincrement = true)
     int Id;
 
